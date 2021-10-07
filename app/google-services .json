@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486795340530",
+    "project_id": "apiretrofit-4b4a6",
+    "storage_bucket": "apiretrofit-4b4a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486795340530:android:2f758f45084964897b7e6b",
+        "android_client_info": {
+          "package_name": "com.example.apiretrofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486795340530-s3bdoc3dc12r0h4hee5dpipas801t0s4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCckxjyRu4mQ5cTklIcf_RJpj5MNlWOHks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486795340530-s3bdoc3dc12r0h4hee5dpipas801t0s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
