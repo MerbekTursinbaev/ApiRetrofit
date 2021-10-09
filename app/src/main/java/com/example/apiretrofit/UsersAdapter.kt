@@ -1,36 +1,35 @@
 package com.example.apiretrofit
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apiretrofit.databinding.ItemSchoolClassBinding
-import com.example.apiretrofit.models.SchoolClass
+import com.example.apiretrofit.models.User
 
 
-class SchoolClassAdapter : RecyclerView.Adapter<SchoolClassAdapter.SchoolClassViewHolder>() {
+class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
-    var models: MutableList<SchoolClass> = mutableListOf()
+    var models: MutableList<User> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    inner class SchoolClassViewHolder(var binding: ItemSchoolClassBinding) :
+    inner class UsersViewHolder(var binding: ItemSchoolClassBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun populateModel(model: SchoolClass) {
-            binding.tvName.text = model.name
+        fun populateModel(model: User) {
+            binding.tvName.text = model.status.toString()
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SchoolClassViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         var view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_school_class, parent, false)
         var binding = ItemSchoolClassBinding.bind(view)
-        return SchoolClassViewHolder(binding)
+        return UsersViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: SchoolClassViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.populateModel(models[position])
     }
 

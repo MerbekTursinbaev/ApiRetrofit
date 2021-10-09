@@ -3,30 +3,27 @@ package com.example.apiretrofit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.apiretrofit.databinding.ActivityMainBinding
-import com.example.apiretrofit.models.SchoolClass
+import com.example.apiretrofit.models.User
 import com.example.apiretrofit.retrofit.ApiClient
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NetworkListener {
-    private val adapter = SchoolClassAdapter()
+    private val adapter = UsersAdapter()
     private lateinit var networkHelper: NetworkHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView.adapter = adapter
         networkHelper = NetworkHelper(ApiClient.getClient())
         setData()
     }
     private fun setData(){
-        networkHelper.getClasses(this)
+        networkHelper.getUsers(this, User())
     }
 
-    override fun onSchoolClassesResponse(models: List<SchoolClass>?) {
-       adapter.models = models as MutableList<SchoolClass>
+    override fun onUsersResponse(models: List<User>?) {
+       adapter.models = models as MutableList<User>
     }
-
-    override fun onSchoolClassesFailure(message: String?) {
+    override fun onUsersFailure(message: String?) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

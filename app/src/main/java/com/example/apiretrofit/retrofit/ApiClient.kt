@@ -18,7 +18,7 @@ class ApiClient {
             }
             if (!::retrofit.isInitialized) {
                 retrofit = Retrofit.Builder()
-                    .baseUrl("http://api.texnopos.uz/")
+                    .baseUrl("http://test.vivian-legend.uz/")
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
             }

@@ -1,11 +1,11 @@
 package com.example.apiretrofit.retrofit
 
-import com.example.apiretrofit.models.SchoolClass
+import com.example.apiretrofit.models.User
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface ApiInterface {
-    @GET("/class")
-    fun getClasses() : Call<List<SchoolClass>>
-
+    @POST("/api/client/login")
+    fun getUsers(@Body user : User) : Call<List<User>>
 }

@@ -1,8 +1,8 @@
 package com.example.apiretrofit
 
-import com.example.apiretrofit.models.SchoolClass
+import com.example.apiretrofit.models.User
 
 interface NetworkListener {
-    fun onSchoolClassesResponse(models: List<SchoolClass>?)
-    fun onSchoolClassesFailure(message: String?)
+    fun onUsersResponse(models: List<User>?)
+    fun onUsersFailure(message: String?)
 }
