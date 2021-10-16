@@ -35,10 +35,17 @@ class FragmentMain : Fragment(R.layout.fragment_main) {
                     binding.progressBar.isVisible = true
                 }
                 ResourceState.SUCCESS -> {
-                    binding.progressBar.isVisible = false
-                    findNavController().navigate(R.id.action_fragmentMain_to_fragmentCategory)
+                    if(it.data?.successful==true){
+                        binding.progressBar.isVisible = false
+                        findNavController().navigate(R.id.action_fragmentMain_to_fragmentCategory)
+                    }else{
+                        binding.progressBar.isVisible = false
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    }
+
                 }
                 ResourceState.ERROR -> {
+                    binding.progressBar.isVisible = false
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 }
             }
