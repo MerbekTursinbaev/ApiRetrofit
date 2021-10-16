@@ -10,7 +10,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 
 class NetworkHelper(private val apiClient: Retrofit) {
-    fun getUsers(onSuccess: (LoginResponse) -> Unit, onFailureListener: (message: String?) -> Unit, user: User){
+    fun getUsers(onSuccess: (loginResponse: LoginResponse) -> Unit, onFailureListener: (message: String?) -> Unit, user: User){
         val call = apiClient.create(ApiInterface::class.java).getUsers(user)
         call.enqueue(object : Callback<LoginResponse>{
             override fun onResponse(

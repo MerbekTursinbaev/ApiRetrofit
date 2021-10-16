@@ -1,6 +1,5 @@
 import com.example.apiretrofit.MainViewModel
 import com.example.apiretrofit.NetworkHelper
-import com.example.apiretrofit.retrofit.ApiClient
 
 import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -20,7 +19,6 @@ val dataModul = module {
             .addConverterFactory(GsonConverterFactory.create(get()))
             .build()
     }
-    single { ApiClient.getClient() }
 }
 val helperModul = module {
     single { NetworkHelper(get()) }
