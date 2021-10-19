@@ -15,5 +15,25 @@
     <fragment
         android:id="@+id/fragmentCategory"
         android:name="com.example.apiretrofit.FragmentCategory"
-        android:label="FragmentCategory" />
+        android:label="FragmentCategory" >
+        <action
+            android:id="@+id/action_fragmentCategory_to_fragmentProductsCategory"
+            app:destination="@id/fragmentProductsCategory" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProductsCategory"
+        android:name="com.example.apiretrofit.ui.FragmentProductsCategory"
+        android:label="FragmentProductsCategory" >
+        <action
+            android:id="@+id/action_fragmentProductsCategory_to_fragmentCatalog"
+            app:destination="@id/fragmentCatalog" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCatalog"
+        android:name="com.example.apiretrofit.ui.FragmentCatalog"
+        android:label="FragmentCatalog" >
+        <argument
+            android:name="identif"
+            app:argType="string" />
+    </fragment>
 </navigation>

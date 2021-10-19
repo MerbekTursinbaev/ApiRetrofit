@@ -2,14 +2,13 @@ package com.example.apiretrofit
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.apiretrofit.models.LoginResponse
-import com.example.apiretrofit.models.User
+import com.example.apiretrofit.models.*
 import com.example.apiretrofit.resource.Resource
-import com.example.apiretrofit.resource.ResourceState
-import com.google.rpc.context.AttributeContext
 
 class MainViewModel(private val networkHelper: NetworkHelper) : ViewModel() {
-    val getLogins: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
+    val getLogins: MutableLiveData<Resource<GenericResponse<LoginResponse>>> = MutableLiveData()
+    val getProductCategory: MutableLiveData<Resource<List<ProductCategory>>> = MutableLiveData()
+    val getProduct : MutableLiveData<Resource<List<Product>>> = MutableLiveData()
     fun getLogin(user: User) {
         getLogins.value = Resource.loading()
         networkHelper.getUsers(
@@ -19,5 +18,21 @@ class MainViewModel(private val networkHelper: NetworkHelper) : ViewModel() {
             onFailureListener = {
                 getLogins.value = Resource.error(it)
             }, user)
+    }
+    fun getProductCategories(){
+        getProductCategory.value = Resource.loading()
+        networkHelper.getProCategories({
+            getProductCategory.value = Resource.success(it)
+        },{
+            getProductCategory.value = Resource.error(it)
+        })
+    }
+    fun getProduct(id : Int){
+        getProduct.value = Resource.loading()
+        networkHelper.getProduct(id,{
+            getProduct.value = Resource.success(it)
+        }, {
+            getProduct.value = Resource.error(it)
+        })
     }
 }
