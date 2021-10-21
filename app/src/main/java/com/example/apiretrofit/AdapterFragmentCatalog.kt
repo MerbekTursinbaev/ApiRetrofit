@@ -18,7 +18,7 @@ class AdapterFragmentCatalog : RecyclerView.Adapter<AdapterFragmentCatalog.Fragm
 
     inner class FragmentCatalogViewHolder(var binding: ItemProductCatalogBinding): RecyclerView.ViewHolder(binding.root){
         fun populateModel(product: Product){
-            binding.description.text = product.description
+            binding.description.text = product.name
         }
     }
 

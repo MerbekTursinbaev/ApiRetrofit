@@ -22,6 +22,7 @@ class FragmentProductsCategory : Fragment(R.layout.fragment_products_category) {
         binding = FragmentProductsCategoryBinding.bind(view)
         binding.recyclerView.adapter = adapter
         setData()
+        positionItem()
         viewModel.getProductCategory.observe(viewLifecycleOwner,{
             when(it.status){
                 ResourceState.LOADING->{
@@ -38,10 +39,14 @@ class FragmentProductsCategory : Fragment(R.layout.fragment_products_category) {
             }
         })
     }
-    fun positionItem(id : Int){
-        var identif  = id.toString()
-        val action = FragmentProductsCategoryDirections.actionFragmentProductsCategoryToFragmentCatalog(identif)
-        findNavController().navigate(action)
+    fun positionItem(){
+
+        adapter.onId = {id->
+            var identif = id
+            val action = FragmentProductsCategoryDirections.actionFragmentProductsCategoryToFragmentCatalog(identif)
+            findNavController().navigate(action)
+        }
+
     }
     private fun setData(){
         viewModel.getProductCategories()

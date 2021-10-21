@@ -27,6 +27,13 @@
         <action
             android:id="@+id/action_fragmentProductsCategory_to_fragmentCatalog"
             app:destination="@id/fragmentCatalog" />
+        <action
+            android:id="@+id/action_fragmentProductsCategory_to_fragmentCategory"
+            app:destination="@id/fragmentCategory"
+            app:popUpTo="@id/nav_graph"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/fragmentCatalog"
@@ -34,6 +41,6 @@
         android:label="FragmentCatalog" >
         <argument
             android:name="identif"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
 </navigation>

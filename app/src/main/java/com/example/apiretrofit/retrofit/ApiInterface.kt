@@ -1,5 +1,6 @@
 package com.example.apiretrofit.retrofit
 
+import android.database.Observable
 import com.example.apiretrofit.models.*
 import retrofit2.Call
 import retrofit2.http.Body
@@ -9,11 +10,11 @@ import retrofit2.http.Path
 
 interface ApiInterface {
     @POST("/api/client/login")
-    fun getUsers(@Body user : User) : Call<GenericResponse<LoginResponse>>
+    fun getUsers(@Body user : User) : Observable<GenericResponse<LoginResponse>>
 
     @GET ("/api/categories")
-    fun getProductCategories() : Call<GenericResponse<List<ProductCategory>>>
+    fun getProductCategories() : Observable<GenericResponse<List<ProductCategory>>>
 
     @GET ("api/categories/{category_id}")
-    fun getProductsCategoryById(@Path ("category_id") id : Int) :Call<GenericResponse<List<Product>>>
+    fun getProductsCategoryById(@Path ("category_id") id : Int) : Observable<GenericResponse<List<Product>>>
 }

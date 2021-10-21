@@ -20,10 +20,11 @@ class FragmentCatalog(): Fragment(R.layout.fragment_catalog) {
     private var adapter  =  AdapterFragmentCatalog()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id  = safeArgs.identif.toInt()
-        binding.recyclerView.adapter = adapter
+        val id  = safeArgs.identif
         binding = FragmentCatalogBinding.bind(view)
         viewModel.getProduct(id)
+        binding.recyclerView.adapter = adapter
+        binding = FragmentCatalogBinding.bind(view)
         viewModel.getProduct.observe(viewLifecycleOwner,{
             when(it.status){
                 ResourceState.LOADING->{

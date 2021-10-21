@@ -9,7 +9,9 @@ import com.example.apiretrofit.ui.FragmentProductsCategory
 
 
 class AdapterFragmentProCategory() : RecyclerView.Adapter<AdapterFragmentProCategory.FragmentProCategoryViewHolder>() {
+    var onId : (id : Int) -> Unit = {
 
+    }
     var models: List<ProductCategory> = listOf()
         set(value) {
             field = value
@@ -21,9 +23,9 @@ class AdapterFragmentProCategory() : RecyclerView.Adapter<AdapterFragmentProCate
         fun populateModel(model: ProductCategory) {
             binding.tvName.text = model.name
             binding.tvDescription.text = model.description
-            binding.root.setOnClickListener {
-                var position: Int  = adapterPosition
-                var id = models[position].id
+            binding.layout.setOnClickListener {
+                var id = models[adapterPosition].id
+                onId.invoke(id)
             }
         }
     }
