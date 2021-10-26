@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.example.apiretrofit.models.*
 import com.example.apiretrofit.resource.Resource
 import com.example.apiretrofit.retrofit.ApiInterface
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MainViewModel(private val api: ApiInterface) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
@@ -19,8 +22,8 @@ class MainViewModel(private val api: ApiInterface) : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     getLogins.value = Resource.success(response)
-                },{
-                    getLogins.value = Resource.error(error.localizedMessage)
+                },{it->
+                    getLogins.value = Resource.error(it.localizedMessage)
                 })
         )
     }
@@ -31,9 +34,9 @@ class MainViewModel(private val api: ApiInterface) : ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
-                    getProductCategory.value = Resource.success(response)
-                },{
-                    getProductCategory.value = Resource.error(error.localizedMessage)
+                    getProductCategory.value = Resource.success(response.payload)
+                },{it->
+                    getProductCategory.value = Resource.error(it.localizedMessage)
                 })
         )
     }
@@ -44,9 +47,9 @@ class MainViewModel(private val api: ApiInterface) : ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
-                    getProduct.value = Resource.success(response)
-                },{
-                    getProduct.value = Resource.error(error.localizedMessage)
+                    getProduct.value = Resource.success(response.payload)
+                },{it->
+                    getProduct.value = Resource.error(it.localizedMessage)
                 })
         )
     }

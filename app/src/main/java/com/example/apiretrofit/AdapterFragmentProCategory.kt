@@ -9,15 +9,12 @@ import com.example.apiretrofit.ui.FragmentProductsCategory
 
 
 class AdapterFragmentProCategory() : RecyclerView.Adapter<AdapterFragmentProCategory.FragmentProCategoryViewHolder>() {
-    var onId : (id : Int) -> Unit = {
-
-    }
+    var onId : (id : Int) -> Unit = {}
     var models: List<ProductCategory> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-
     inner class FragmentProCategoryViewHolder(var binding: ItemProductCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun populateModel(model: ProductCategory) {
@@ -29,17 +26,13 @@ class AdapterFragmentProCategory() : RecyclerView.Adapter<AdapterFragmentProCate
             }
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FragmentProCategoryViewHolder {
-        var view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_product_category, parent, false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.item_product_category, parent, false)
         var binding = ItemProductCategoryBinding.bind(view)
         return FragmentProCategoryViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: FragmentProCategoryViewHolder, position: Int) {
         holder.populateModel(models[position])
     }
-
     override fun getItemCount() : Int = models.size
 }

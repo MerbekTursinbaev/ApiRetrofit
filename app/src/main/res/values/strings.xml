@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Api.Retrofit</string>
+    <string name="search_client">Search client</string>
 </resources>

@@ -25,6 +25,7 @@ class FragmentCatalog(): Fragment(R.layout.fragment_catalog) {
         viewModel.getProduct(id)
         binding.recyclerView.adapter = adapter
         binding = FragmentCatalogBinding.bind(view)
+
         viewModel.getProduct.observe(viewLifecycleOwner,{
             when(it.status){
                 ResourceState.LOADING->{

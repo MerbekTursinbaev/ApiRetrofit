@@ -15,5 +15,8 @@ class FragmentCategory: Fragment(R.layout.fragment_category) {
         binding.catalog.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentCategory_to_fragmentProductsCategory)
         }
+        binding.order.setOnClickListener {
+            findNavController().navigate(R.id.action_fragmentCategory_to_orderFragment)
+        }
     }
 }

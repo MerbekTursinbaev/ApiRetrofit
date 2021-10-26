@@ -1,7 +1,8 @@
 import com.example.apiretrofit.MainViewModel
-import com.example.apiretrofit.NetworkHelper
+import com.example.apiretrofit.retrofit.ApiInterface
 
 import com.google.gson.GsonBuilder
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -17,11 +18,11 @@ val dataModul = module {
         Retrofit.Builder()
             .baseUrl("http://test.vivian-legend.uz/")
             .addConverterFactory(GsonConverterFactory.create(get()))
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
     }
-}
-val helperModul = module {
-    single { NetworkHelper(get()) }
+    single { get<Retrofit>().create(ApiInterface::class.java) }
+
 }
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
